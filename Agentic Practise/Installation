@@ -1,0 +1,37 @@
+Step 1: Install uv
+
+Run the official installation script directly in your PowerShell terminal:
+
+PowerShell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+Alternative Installers:
+
+Via WinGet: winget install --id astral-sh.uv
+
+Via Pip: pip install uv
+
+Step 2: Add uv to PATH (If Already Installed)
+
+If you have already installed uv but PowerShell still cannot find it, manually append its default installation directory to your environment path:
+
+PowerShell
+$env:Path += ";$env:USERPROFILE\.cargo\bin;$env:USERPROFILE\.local\bin"
+To permanently add it to your user PATH:
+
+PowerShell
+[Environment]::SetEnvironmentVariable("Path", $env:Path + ";$env:USERPROFILE\.cargo\bin", "User")
+Step 3: Refresh Terminal and Verify
+
+Fully close and restart VS Code (or open a new PowerShell window).
+
+Verify the command works:
+
+PowerShell
+uv --version
+Once it returns a version number (e.g., uv 0.x.x), re-run your initial command:
+
+PowerShell
+uv init .
+
+
+uv add langchain langgraph langchain-groq python-dotenv tavily-agent-toolkit langgraph-checkpoint-postgres "psycopg[binary,pool]" langsmith
